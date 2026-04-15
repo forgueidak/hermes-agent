@@ -76,6 +76,8 @@ All configuration is handled via environment variables. See [`.env.example`](.en
 
 > **Note:** `VERBOSE_TOOL_CALLS=true` is useful when debugging tool chains locally — it logs each tool invocation and its result so you can trace exactly what the agent is doing.
 
+> **Note:** When running against Ollama, make sure the model is already pulled before starting the agent (`ollama pull hermes3`), otherwise the first request will time out while Ollama downloads it in the background.
+
 ## Docker
 
 ```bash
@@ -88,12 +90,5 @@ docker run --env-file .env hermes-agent
 ```
 hermes-agent/
 ├── hermes_agent/          # Main package
-│   ├── __init__.py
-│   ├── __main__.py        # Entry point
-│   ├── agent.py           # Core agent logic
-│   ├── tools/             # Tool definitions
-│   ├── prompts/           # System prompts
-│   └── utils/             # Utilities
-├── tests/                 # Test suite
-├── .env.examp
+│   ├── __init__.p
 ```
