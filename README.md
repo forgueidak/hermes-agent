@@ -64,8 +64,11 @@ All configuration is handled via environment variables. See [`.env.example`](.en
 | `API_KEY` | API authentication key | `ollama` |
 | `MAX_TOKENS` | Maximum tokens per response | `4096` |
 | `TEMPERATURE` | Sampling temperature | `0.2` |
+| `MAX_TOOL_ROUNDS` | Max consecutive tool-call iterations before stopping | `5` |
 
 > **Note:** I lowered `TEMPERATURE` to `0.2` (from `0.7`) for more deterministic tool-calling behavior.
+
+> **Note:** `MAX_TOOL_ROUNDS` defaults to `5` in my setup — I found the agent would occasionally loop indefinitely on ambiguous queries without a hard cap.
 
 ## Docker
 
@@ -106,5 +109,4 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## Acknowledgements
 
-- [NousResearch](https://nousresearch.com/) for the original hermes-agent and Hermes model series
-- The open-source LLM community
+- [NousResearch](https://nousresearch.com/) for the original hermes-agent and Hermes model
