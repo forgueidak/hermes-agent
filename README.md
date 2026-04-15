@@ -65,10 +65,13 @@ All configuration is handled via environment variables. See [`.env.example`](.en
 | `MAX_TOKENS` | Maximum tokens per response | `4096` |
 | `TEMPERATURE` | Sampling temperature | `0.2` |
 | `MAX_TOOL_ROUNDS` | Max consecutive tool-call iterations before stopping | `5` |
+| `SYSTEM_PROMPT_PATH` | Path to a custom system prompt file | `prompts/default.txt` |
 
 > **Note:** I lowered `TEMPERATURE` to `0.2` (from `0.7`) for more deterministic tool-calling behavior.
 
 > **Note:** `MAX_TOOL_ROUNDS` defaults to `5` in my setup — I found the agent would occasionally loop indefinitely on ambiguous queries without a hard cap.
+
+> **Note:** `SYSTEM_PROMPT_PATH` lets you swap in a custom system prompt without touching the code — handy for testing different personas or task-specific instructions.
 
 ## Docker
 
@@ -101,12 +104,4 @@ hermes-agent/
 3. Commit your changes
 4. Open a Pull Request
 
-Please use the [issue templates](.github/ISSUE_TEMPLATE/) for bug reports and feature requests.
-
-## License
-
-MIT License — see [LICENSE](LICENSE) for details.
-
-## Acknowledgements
-
-- [NousResearch](https://nousresearch.com/) for the original hermes-agent and Hermes model
+Please use the [issue templates]
