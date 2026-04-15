@@ -66,12 +66,15 @@ All configuration is handled via environment variables. See [`.env.example`](.en
 | `TEMPERATURE` | Sampling temperature | `0.2` |
 | `MAX_TOOL_ROUNDS` | Max consecutive tool-call iterations before stopping | `5` |
 | `SYSTEM_PROMPT_PATH` | Path to a custom system prompt file | `prompts/default.txt` |
+| `VERBOSE_TOOL_CALLS` | Print tool call inputs/outputs to stdout for debugging | `false` |
 
 > **Note:** I lowered `TEMPERATURE` to `0.2` (from `0.7`) for more deterministic tool-calling behavior.
 
 > **Note:** `MAX_TOOL_ROUNDS` defaults to `5` in my setup — I found the agent would occasionally loop indefinitely on ambiguous queries without a hard cap.
 
 > **Note:** `SYSTEM_PROMPT_PATH` lets you swap in a custom system prompt without touching the code — handy for testing different personas or task-specific instructions.
+
+> **Note:** `VERBOSE_TOOL_CALLS=true` is useful when debugging tool chains locally — it logs each tool invocation and its result so you can trace exactly what the agent is doing.
 
 ## Docker
 
@@ -92,16 +95,5 @@ hermes-agent/
 │   ├── prompts/           # System prompts
 │   └── utils/             # Utilities
 ├── tests/                 # Test suite
-├── .env.example           # Environment template
-├── Dockerfile
-└── pyproject.toml
+├── .env.examp
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feat/my-feature`)
-3. Commit your changes
-4. Open a Pull Request
-
-Please use the [issue templates]
