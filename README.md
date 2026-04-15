@@ -2,6 +2,8 @@
 
 A fork of [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) — an AI agent framework powered by Hermes models with tool-calling and structured output capabilities.
 
+> **Personal fork** — I'm using this to experiment with local LLM agents via Ollama. My default config targets `hermes3` running locally.
+
 ## Features
 
 - 🤖 **Hermes Model Integration** — Optimized for NousResearch Hermes series models
@@ -61,7 +63,9 @@ All configuration is handled via environment variables. See [`.env.example`](.en
 | `API_BASE_URL` | Model API endpoint | `http://localhost:11434/v1` |
 | `API_KEY` | API authentication key | `ollama` |
 | `MAX_TOKENS` | Maximum tokens per response | `4096` |
-| `TEMPERATURE` | Sampling temperature | `0.7` |
+| `TEMPERATURE` | Sampling temperature | `0.2` |
+
+> **Note:** I lowered `TEMPERATURE` to `0.2` (from `0.7`) for more deterministic tool-calling behavior.
 
 ## Docker
 
