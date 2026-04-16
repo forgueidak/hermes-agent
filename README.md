@@ -68,6 +68,7 @@ All configuration is handled via environment variables. See [`.env.example`](.en
 | `SYSTEM_PROMPT_PATH` | Path to a custom system prompt file | `prompts/default.txt` |
 | `VERBOSE_TOOL_CALLS` | Print tool call inputs/outputs to stdout for debugging | `false` |
 | `REQUEST_TIMEOUT` | Seconds before an API request times out | `120` |
+| `CONTEXT_WINDOW` | Max context window size passed to the model | `8192` |
 
 > **Note:** I lowered `TEMPERATURE` to `0.2` (from `0.7`) for more deterministic tool-calling behavior.
 
@@ -77,15 +78,6 @@ All configuration is handled via environment variables. See [`.env.example`](.en
 
 > **Note:** `VERBOSE_TOOL_CALLS=true` is useful when debugging tool chains locally — it logs each tool invocation and its result so you can trace exactly what the agent is doing.
 
-> **Note:** I set `REQUEST_TIMEOUT` to `120` seconds — the default was too short when running larger models on my machine. If you're on faster hardware or using a remote endpoint, you can probably drop this to `60`.
+> **Note:** I set `REQUEST_TIMEOUT` to `120` seconds — the default was too short when running larger models on my machine.
 
-## My Ollama Setup
-
-For reference, I pull and run the model with:
-
-```bash
-ollama pull hermes3
-ollama serve
-```
-
-Then set `MODEL_NAME=hermes3` in `.env`. The `API_BASE_URL` default already points at Ollama's local endpoint so no other changes are needed.
+> **Note:** I explicitly set `CONTEXT_WINDOW` to `8192` — Ollama sometimes doesn't infer this correctly from the model config, which caused silent truncation mid-conversation.
