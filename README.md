@@ -76,19 +76,6 @@ All configuration is handled via environment variables. See [`.env.example`](.en
 
 > **Note:** `VERBOSE_TOOL_CALLS=true` is useful when debugging tool chains locally — it logs each tool invocation and its result so you can trace exactly what the agent is doing.
 
-> **Note:** When running against Ollama, make sure the model is already pulled before starting the agent (`ollama pull hermes3`), otherwise the first request will time out while Ollama downloads it in the background.
+> **Note:** When running against Ollama, make sure the model is already pulled before starting the agent (`ollama pull hermes3`), otherwise the first request will time out while Ollama downloads the model.
 
-## Docker
-
-```bash
-docker build -t hermes-agent .
-docker run --env-file .env hermes-agent
-```
-
-## Project Structure
-
-```
-hermes-agent/
-├── hermes_agent/          # Main package
-│   ├── __init__.p
-```
+> **Note:** I've also had good results with `hermes3:8b-llama3.1-q6_K` — slightly better coherence on multi-step tool chains than the default q4 quantization, and still runs fine on 16GB VRAM.
