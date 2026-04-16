@@ -67,6 +67,7 @@ All configuration is handled via environment variables. See [`.env.example`](.en
 | `MAX_TOOL_ROUNDS` | Max consecutive tool-call iterations before stopping | `5` |
 | `SYSTEM_PROMPT_PATH` | Path to a custom system prompt file | `prompts/default.txt` |
 | `VERBOSE_TOOL_CALLS` | Print tool call inputs/outputs to stdout for debugging | `false` |
+| `REQUEST_TIMEOUT` | Seconds before an API request times out | `120` |
 
 > **Note:** I lowered `TEMPERATURE` to `0.2` (from `0.7`) for more deterministic tool-calling behavior.
 
@@ -76,6 +77,6 @@ All configuration is handled via environment variables. See [`.env.example`](.en
 
 > **Note:** `VERBOSE_TOOL_CALLS=true` is useful when debugging tool chains locally — it logs each tool invocation and its result so you can trace exactly what the agent is doing.
 
-> **Note:** When running against Ollama, make sure the model is already pulled before starting the agent (`ollama pull hermes3`), otherwise the first request will time out while Ollama downloads the model.
+> **Note:** I set `REQUEST_TIMEOUT` to `120` seconds — the default was too short when running larger models on my machine, which would cause spurious timeout errors on the first token.
 
-> **Note:** I've also had good results with `hermes3:8b-llama3.1-q6_K` — slightly better coherence on multi-step tool chains than the default q4 quantization, and still runs fine on 16GB VRAM.
+> **Note:** When running against Ollama, make sure the model is already pulled before starting the agent (`ollama pull hermes3`), otherwise the first request will time out while Ollama downloads the model.
