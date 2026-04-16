@@ -77,6 +77,15 @@ All configuration is handled via environment variables. See [`.env.example`](.en
 
 > **Note:** `VERBOSE_TOOL_CALLS=true` is useful when debugging tool chains locally — it logs each tool invocation and its result so you can trace exactly what the agent is doing.
 
-> **Note:** I set `REQUEST_TIMEOUT` to `120` seconds — the default was too short when running larger models on my machine, which would cause spurious timeout errors on the first token.
+> **Note:** I set `REQUEST_TIMEOUT` to `120` seconds — the default was too short when running larger models on my machine. If you're on faster hardware or using a remote endpoint, you can probably drop this to `60`.
 
-> **Note:** When running against Ollama, make sure the model is already pulled before starting the agent (`ollama pull hermes3`), otherwise the first request will time out while Ollama downloads the model.
+## My Ollama Setup
+
+For reference, I pull and run the model with:
+
+```bash
+ollama pull hermes3
+ollama serve
+```
+
+Then set `MODEL_NAME=hermes3` in `.env`. The `API_BASE_URL` default already points at Ollama's local endpoint so no other changes are needed.
