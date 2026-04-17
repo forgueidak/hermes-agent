@@ -2,6 +2,8 @@
 
 An intelligent agent framework built around the Hermes model family,
 supporting tool use, function calling, and multi-step reasoning.
+
+Personal fork: experimenting with custom tool integrations and prompt tweaks.
 """
 
 __version__ = "0.1.0"
