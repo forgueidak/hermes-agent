@@ -73,7 +73,8 @@ ignore = ["E501"]
 
 [tool.mypy]
 python_version = "3.10"
-strict = true
+# relaxed from upstream strict=true — too noisy for personal exploration
+strict = false
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
