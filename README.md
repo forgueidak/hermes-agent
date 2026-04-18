@@ -78,6 +78,6 @@ All configuration is handled via environment variables. See [`.env.example`](.en
 
 > **Note:** `VERBOSE_TOOL_CALLS=true` is useful when debugging tool chains locally — it logs each tool invocation and its result so you can trace exactly what the agent is doing.
 
-> **Note:** I set `REQUEST_TIMEOUT` to `120` seconds — the default was too short when running larger models on my machine.
+> **Note:** I set `REQUEST_TIMEOUT` to `120` seconds — local Ollama inference can be slow on first load, so the upstream default of `30` was too aggressive and caused spurious timeouts.
 
-> **Note:** I explicitly set `CONTEXT_WINDOW` to `8192` — Ollama sometimes doesn't infer this correctly from the model config, which caused silent truncation mid-conversation.
+> **Note:** `CONTEXT_WINDOW` is set to `8192` to match the default Ollama context size. If you've configured Ollama with a larger context (e.g. `num_ctx=16384`), bump this accordingly or the model won't use the extra space.
